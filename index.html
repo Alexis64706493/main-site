@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bobo Dioulasso - Patrimoine Culturel</title>
+    <style>
+        /* Variables pour une cohérence globale */
+        :root {
+            --primary-color: #e67e22;
+            --secondary-color: #16a085;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --background-color: rgba(44, 62, 80, 0.05);
+            --background-image: linear-gradient(135deg, rgba(230, 126, 34, 0.1) 0%, rgba(22, 160, 133, 0.1) 100%);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Réinitialisation et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--background-color);
+            background-image: var(--background-image);
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* En-tête et navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 60px;
+            width: 60px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .logo-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .logo-title span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 18px;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Page d'accueil */
+        .hero {
+            padding: 80px 0 50px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+
+        .city-description {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .city-description h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        /* Page Patrimoine */
+        .patrimoine-page {
+            padding: 80px 0 50px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+        }
+
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .site-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .site-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .site-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .site-info {
+            padding: 20px;
+        }
+
+        .site-info h3 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .site-info p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #d35400;
+            transform: scale(1.05);
+        }
+
+        /* Page de réservation */
+        .reservation-page {
+            padding: 80px 0 50px;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Page Galerie */
+        .gallery-page {
+            padding: 80px 0 50px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Page de site patrimonial */
+        .site-page {
+            padding: 80px 0 50px;
+        }
+
+        .site-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .site-content {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 40px;
+            line-height: 1.8;
+        }
+
+        .site-main-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .site-history {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .site-history h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            background: var(--dark-color);
+        }
+
+        .back-btn:hover {
+            background: #1a252f;
+        }
+
+        /* Pied de page */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #34495e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #34495e;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page d'accueil -->
+    <div id="accueil">
+        <header>
+            <div class="container header-container">
+                <div class="logo-container">
+                    <div class="logo">BD</div>
+                    <h1 class="logo-title">BOBO <span>DIOULASSO</span></h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#patrimoine">Patrimoine</a></li>
+                        <li><a href="#reservation">Réservation d'hôtel</a></li>
+                        <li><a href="#galerie">Galerie</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="container">
+                <h1>Découvrez le Trésor Culturel du Burkina Faso</h1>
+                <p>Bobo Dioulasso, la capitale économique et culturelle de l'ouest du Burkina Faso, vous invite à explorer son riche patrimoine historique et architectural</p>
+                
+                <div class="city-description">
+                    <h2>Bienvenue à Bobo Dioulasso</h2>
+                    <p>Surnommée affectueusement "Bobo", notre ville est la deuxième plus grande du Burkina Faso après Ouagadougou. Berceau de la culture Bobo, Dioula et Sénoufo, Bobo Dioulasso est réputée pour son ambiance chaleureuse, son artisanat traditionnel et son architecture exceptionnelle.</p>
+                    <p>Fondée au XVe siècle, la ville a prospéré grâce au commerce transsaharien. Son nom signifie "la maison des Bobo-dioula" - une référence à ses deux principaux groupes ethniques. Aujourd'hui, Bobo Dioulasso est une ville dynamique où tradition et modernité se côtoient harmonieusement.</p>
+                    <p>Explorez notre site pour découvrir les merveilles patrimoniales de la ville, réserver votre séjour dans l'un de nos hôtels accueillants, et admirer les trésors architecturaux à travers notre galerie photos.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page Patrimoine -->
+    <div id="patrimoine" class="patrimoine-page" style="display:none;">
+        <div class="container">
+            <h2 class="page-title">Patrimoine Culturel de Bobo Dioulasso</h2>
+            <div class="sites-grid">
+                <!-- Site 1 -->
+                <div class="site-card">
+                    <img src="galerie2.jpg" alt="Grande Mosquée" class="site-image">
+                    <div class="site-info">
+                        <h3>Grande Mosquée</h3>
+                        <p>Un chef-d'œuvre d'architecture soudano-sahélienne construit en banco (terre crue)</p>
+                        <a href="#site-mosquee" class="btn">Voir les détails</a>
+                    </div>
+                </div>
+                
+                <!-- Site 2 -->
+                <div class="site-card">
+                    <img src="galerie11.jpg" alt="Vieille Ville" class="site-image">
+                    <div class="site-info">
+                        <h3>Quartier de Dioulassoba</h3>
+                        <p>Le cœur historique de Bobo avec ses ruelles étroites et ses maisons traditionnelles</p>
+                        <a href="#" class="btn">Voir les détails</a>
+                    </div>
+                </div>
+                
+                <!-- Site 3 -->
+                <div class="site-card">
+                    <img src="marche-bobo.jpg" alt="Marché Central" class="site-image">
+                    <div class="site-info">
+                        <h3>Marché Central</h3>
+                        <p>Un marché animé où l'artisanat local et les produits du terroir sont à l'honneur</p>
+                        <a href="#" class="btn">Voir les détails</a>
+                    </div>
+                </div>
+                
+                <!-- Site 4 -->
+                <div class="site-card">
+                    <img src="mausolee.jpg" alt="Mausolée" class="site-image">
+                    <div class="site-info">
+                        <h3>Mausolée des Guérisseurs</h3>
+                        <p>Site sacré dédié aux ancêtres guérisseurs de la région</p>
+                        <a href="#" class="btn">Voir les détails</a>
+                    </div>
+                </div>
+                
+                <!-- Site 5 -->
+                <div class="site-card">
+                    <img src="maison-peuple.jpg" alt="Place" class="site-image">
+                    <div class="site-info">
+                        <h3>Place de la Nation</h3>
+                        <p>Centre névralgique de la ville où se déroulent les grandes manifestations culturelles</p>
+                        <a href="#" class="btn">Voir les détails</a>
+                    </div>
+                </div>
+                
+                <!-- Site 6 -->
+                <div class="site-card">
+                    <img src="maison-peuple.jpg" alt="Maison" class="site-image">
+                    <div class="site-info">
+                        <h3>Maison du Peuple</h3>
+                        <p>Bâtiment colonial abritant aujourd'hui des institutions culturelles</p>
+                        <a href="#" class="btn">Voir les détails</a>
+                    </div>
+                </div>
+                
+                <!-- Site 7 -->
+                <div class="site-card">
+                    <img src="foret-sacre-kou.jpg" alt="Forêt" class="site-image">
+                    <div class="site-info">
+                        <h3>Forêt Sacrée de Kou</h3>
+                        <p>Site naturel où se déroulent des cérémonies traditionnelles séculaires</p>
+                        <a href="#" class="btn">Voir les détails</a>
+                    </div>
+                </div>
+                
+                <!-- Site 8 -->
+                <div class="site-card">
+                    <img src="musee-musique.jpg" alt="Musée" class="site-image">
+                    <div class="site-info">
+                        <h3>Musée Provincial du Houet</h3>
+                        <p>Conservatoire des traditions et de l'histoire de la région</p>
+                        <a href="#" class="btn">Voir les détails</a>
+                    </div>
+                </div>
+                
+                <!-- Site 9 -->
+                <div class="site-card">
+                    <img src="train.jpg" alt="Gare" class="site-image">
+                    <div class="site-info">
+                        <h3>Gare Ferroviaire Historique</h3>
+                        <p>Témoin de l'époque coloniale et du développement de la ville</p>
+                        <a href="#" class="btn">Voir les détails</a>
+                    </div>
+                </div>
+                
+                <!-- Site 10 -->
+                <div class="site-card">
+                    <img src="cathedrale.jpg" alt="Cathédrale" class="site-image">
+                    <div class="site-info">
+                        <h3>Cathédrale</h3>
+                        <p>Édifice religieux remarquable mêlant architecture moderne et traditionnelle</p>
+                        <a href="#" class="btn">Voir les détails</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Réservation -->
+    <div id="reservation" class="reservation-page" style="display:none;">
+        <div class="container">
+            <h2 class="page-title">Réservation d'Hôtel à Bobo Dioulasso</h2>
+            <div class="form-container">
+                <form id="reservation-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" id="prenom" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="arrivee">Date d'arrivée</label>
+                            <input type="date" id="arrivee" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="depart">Date de départ</label>
+                            <input type="date" id="depart" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="adultes">Nombre d'adultes</label>
+                            <select id="adultes" class="form-control" required>
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="enfants">Nombre d'enfants</label>
+                            <select id="enfants" class="form-control">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hotel">Hôtel</label>
+                        <select id="hotel" class="form-control" required>
+                            <option value="" disabled selected>Sélectionnez un hôtel</option>
+                            <option value="maison">Hôtel La Maison Blanche</option>
+                            <option value="savane">Hôtel La Savane</option>
+                            <option value="royal">Hôtel Royal</option>
+                            <option value="kibidwe">Hôtel Kibidwé</option>
+                            <option value="lac">Hôtel du Lac</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="chambre">Type de chambre</label>
+                        <select id="chambre" class="form-control" required>
+                            <option value="" disabled selected>Sélectionnez un type</option>
+                            <option value="standard">Chambre Standard</option>
+                            <option value="superieure">Chambre Supérieure</option>
+                            <option value="deluxe">Chambre Deluxe</option>
+                            <option value="suite">Suite</option>
+                            <option value="familiale">Suite Familiale</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="paiement">Méthode de paiement</label>
+                        <select id="paiement" class="form-control" required>
+                            <option value="" disabled selected>Sélectionnez une méthode</option>
+                            <option value="carte">Carte de crédit</option>
+                            <option value="especes">Paiement sur place</option>
+                            <option value="virement">Virement bancaire</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="commentaires">Demandes spéciales</label>
+                        <textarea id="commentaires" class="form-control" placeholder="Demandes particulières, préférences alimentaires, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn submit-btn">Réserver maintenant</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Galerie -->
+    <div id="galerie" class="gallery-page" style="display:none;">
+        <div class="container">
+            <h2 class="page-title">Galerie Photos de Bobo Dioulasso</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="grande-mosquee.jpg" alt="Grande Mosquée">
+                    <div class="gallery-caption">Grande Mosquée de Bobo Dioulasso</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="galerie7.jpg" alt="Vieille Ville">
+                    <div class="gallery-caption">Ruelles de Dioulassoba</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="galerie3.jpg" alt="Marché Central">
+                    <div class="gallery-caption">Marché Central animé</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="mausolee.jpg" alt="Mausolée">
+                    <div class="gallery-caption">Mausolée des Guérisseurs</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="maison-peuple.jpg" alt="Place">
+                    <div class="gallery-caption">Place de la Nation</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="maison-peuple.jpg" alt="Maison">
+                    <div class="gallery-caption">Maison du Peuple</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foret-sacre-kou.jpg" alt="Forêt">
+                    <div class="gallery-caption">Forêt Sacrée de Kou</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="musee-musique.jpg" alt="Musée">
+                    <div class="gallery-caption">Musée Provincial du Houet</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="train.jpg" alt="Gare">
+                    <div class="gallery-caption">Gare Ferroviaire Historique</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="cathedrale.jpg" alt="Cathédrale">
+                    <div class="gallery-caption">Cathédrale</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="village-artisanal.jpg" alt="Artisanat">
+                    <div class="gallery-caption">Artisanat local</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="galerie12.jpg" alt="Paysage">
+                    <div class="gallery-caption">Paysages de Bobo Dioulasso</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page d'un site patrimonial -->
+    <div id="site-mosquee" class="site-page" style="display:none;">
+        <div class="container">
+            <div class="site-header">
+                <h2 class="page-title">La Grande Mosquée de Bobo Dioulasso</h2>
+            </div>
+            
+            <div class="site-content">
+                <img src="grande-mosquee-detail.jpg" alt="Grande Mosquée" class="site-main-image">
+                
+                <p>La Grande Mosquée de Bobo Dioulasso est un chef-d'œuvre d'architecture soudano-sahélienne et l'un des monuments les plus emblématiques de la ville. Construite entièrement en banco (terre crue), elle témoigne du savoir-faire traditionnel des bâtisseurs de la région.</p>
+                
+                <p>Érigée au XIXe siècle, plus précisément en 1880, la mosquée a été construite sous le règne de l'empereur du Kénédougou, Tieba Traoré. Son architecture est caractéristique des mosquées de style soudanais, avec ses contreforts élancés et ses piliers en bois de rônier qui dépassent de la structure, servant à la fois d'échafaudage permanent pour les réparations et d'éléments décoratifs.</p>
+                
+                <div class="site-history">
+                    <h3>Histoire et Signification Culturelle</h3>
+                    <p>La Grande Mosquée de Bobo Dioulasso est bien plus qu'un lieu de culte : c'est un symbole de l'identité culturelle de la ville. Son architecture unique est le fruit d'une synthèse entre les traditions de construction locales et les influences islamiques venues du Nord.</p>
+                    
+                    <p>La mosquée a été construite par des maçons traditionnels appelés "barey" qui ont perpétué des techniques ancestrales. Chaque année, après la saison des pluies, la communauté se mobilise pour effectuer le "crépissage" de la mosquée, une cérémonie traditionnelle qui permet d'entretenir l'édifice en appliquant une nouvelle couche de banco. Cet événement est devenu un moment fort de la vie sociale et religieuse de Bobo Dioulasso.</p>
+                    
+                    <p>Classée monument historique en 1932, la Grande Mosquée a été proposée pour inscription au patrimoine mondial de l'UNESCO. Elle attire chaque année des milliers de visiteurs, tant pour sa valeur architecturale que pour son importance spirituelle.</p>
+                </div>
+                
+                <a href="#patrimoine" class="btn back-btn">Retour à la liste des sites</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>À propos de Bobo Dioulasso</h3>
+                    <p>Bobo Dioulasso, capitale culturelle du Burkina Faso, offre un mélange unique d'histoire, de traditions et de modernité. Découvrez ses trésors cachés et son hospitalité légendaire.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liens Rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#patrimoine">Sites Patrimoniaux</a></li>
+                        <li><a href="#reservation">Réservation d'hôtel</a></li>
+                        <li><a href="#galerie">Galerie Photos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="contact-info">
+                        <li>📍 Mairie de Bobo Dioulasso, Avenue de la Nation</li>
+                        <li>📞 +226 20 97 01 23</li>
+                        <li>✉️ info@tourisme-bobo.bf</li>
+                    </ul>
+                    
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Office de Tourisme de Bobo Dioulasso. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation entre les pages
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Cacher toutes les pages
+                document.querySelectorAll('div[id]').forEach(page => {
+                    if(page.id !== 'accueil') page.style.display = 'none';
+                });
+                
+                // Afficher la page sélectionnée
+                const targetId = this.getAttribute('href').substring(1);
+                if(targetId === 'accueil') {
+                    document.getElementById('accueil').style.display = 'block';
+                } else {
+                    document.getElementById(targetId).style.display = 'block';
+                }
+                
+                // Faire défiler vers le haut
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Navigation pour les liens des sites patrimoniaux
+        document.querySelectorAll('.site-card a, .back-btn').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Cacher toutes les pages
+                document.querySelectorAll('div[id]').forEach(page => {
+                    page.style.display = 'none';
+                });
+                
+                // Afficher la page sélectionnée
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).style.display = 'block';
+                
+                // Faire défiler vers le haut
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Gestion du formulaire de réservation
+        document.getElementById('reservation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre réservation ! Nous vous contacterons pour confirmer les détails.');
+            this.reset();
+        });
+
+        // Initialisation - Afficher uniquement la page d'accueil au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('div[id]').forEach(page => {
+                if(page.id !== 'accueil') page.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
